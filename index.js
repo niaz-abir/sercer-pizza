@@ -1,12 +1,12 @@
-import express from "express";
-import mongoose from "mongoose";
-import cors from "cors";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import helmet from "helmet";
-import productsRoutes from "../server/routes/products-routes.js";
-import cartRoutes from "../server/routes/cart-routes.js";
-import orderRoutes from "../server/routes/order-route.js";
+import express from 'express';
+import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import helmet from 'helmet';
+import productsRoutes from './routes/products-routes.js';
+import cartRoutes from './routes/cart-routes.js';
+import orderRoutes from './routes/order-route.js';
 
 dotenv.config();
 
@@ -17,15 +17,15 @@ const uri = process.env.DB_URI;
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
-app.use("/api/products", productsRoutes);
-app.use("/api/cart", cartRoutes);
-app.use("/api/order", orderRoutes);
+app.use('/api/products', productsRoutes);
+app.use('/api/cart', cartRoutes);
+app.use('/api/order', orderRoutes);
 
 mongoose
   .connect(uri, {
-    dbName: "pizzazz",
+    dbName: 'pizzazz',
   })
   .then(
     app.listen(port, () => {
